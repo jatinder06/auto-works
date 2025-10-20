@@ -13,7 +13,7 @@ jobs:
       - name: Greet the user
         run: echo "Hello World"
         shell: bash
-      - run: echo "Date is ${{date}} \n ${{ github.actor}}"
+      - run: echo "Date is `date` \n ${{ github.actor}}"
         shell: bash  ##optional by default bash on non windows platforms
         ## http://docs.github.com/en/actions/reference/workflows-and-actions/expressions
         ## https://docs.github.com/en/actions/reference/workflows-and-actions/contexts
