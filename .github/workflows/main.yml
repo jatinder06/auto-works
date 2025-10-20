@@ -1,0 +1,29 @@
+name: Deploy Batch Sentiment Analysis App
+on: 
+  push:
+    branches: 
+      - dev
+  #workflow_dispatch:
+    
+jobs:
+  first_job:
+    name: My first job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Greet the user
+        run: echo "Hello World"
+        shell: bash
+      - run: echo "Date is ${{date}} \n ${{ github.actor}}"
+        shell: bash  ##optional by default bash on non windows platforms
+        ## http://docs.github.com/en/actions/reference/workflows-and-actions/expressions
+        ## https://docs.github.com/en/actions/reference/workflows-and-actions/contexts
+      - run: |
+          echo "Hello world from ${{ github.actor }}."
+          echo "Current branch is '${{ github.ref }}'."
+      - name: Checkout
+        uses: actions/checkout@v5.0.0
+      - name: Tree
+        run: tree
+        
+      
+  
