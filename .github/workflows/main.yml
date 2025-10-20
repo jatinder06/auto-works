@@ -24,6 +24,9 @@ jobs:
         uses: actions/checkout@v5.0.0
       - name: Tree
         run: tree
-        
+      - run: |
+          echo "Hello ${{ vars.WHO_TO_GREET }} from ${{ github.
+          actor }}."
+          echo "My secret is ${{ secrets.MY_SECRET }}."
       
   
