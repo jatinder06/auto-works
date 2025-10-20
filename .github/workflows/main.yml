@@ -28,5 +28,24 @@ jobs:
           echo "Hello ${{ vars.WHO_TO_GREET }} from ${{ github.
           actor }}."
           echo "My secret is ${{ secrets.MY_SECRET }}."
-      
+  Test:
+    runs-on: ubuntu-latest
+    environment: Test
+    needs: first_job
+    steps:
+      - run: |
+          echo "Hello ${{ vars.WHO_TO_GREET }} from ${{ github.actor }}."
+          sec=$(echo ${{ secrets.MY_SECRET }} | sed 's/./& /g')
+          echo "My secret is '$sec'."
+  Production:
+    runs-on: ubuntu-latest
+    environment: 
+      name: Production
+      url: https://writeabout.net
+    needs: [Test]
+    steps:
+      - run: |
+          echo "Hello ${{ vars.WHO_TO_GREET }} from ${{ github.actor }}."
+          sec=$(echo ${{ secrets.MY_SECRET }} | sed 's/./& /g')
+          echo "My secret is '$sec'."
   
