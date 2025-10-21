@@ -18,9 +18,7 @@ jobs:
       - run: echo "${{ github.event.pull_request.title }}"
       - run: echo "PR title is '${{ github.event.pull_request.title}}'."
       
-      ## script injection in PR title
-      #- run: echo "${{ github.event.pull_request.title }}"
-      #- run: echo "PR title is '${{ github.event.pull_request.title}}'."
+      #script injection in PR title
 
       ##Writing messages to the log
       - name: Write messages to the log
