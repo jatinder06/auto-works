@@ -13,6 +13,18 @@ jobs:
           echo "Workflow triggered by event '${{ github.event_name }}'."
           echo "Workflow triggered by actor '${{ github.actor}}''."
       - uses: actions/checkout@v4.1.0
+      ## actionlint to validate workflow files
       - uses: devops-actions/actionlint@v0.1.2
       - run: echo "${{ github.event.pull_request.title }}"
       - run: echo "PR title is '${{ github.event.pull_request.title}}'."
+      
+      ## script injection in PR title
+      #- run: echo "${{ github.event.pull_request.title }}"
+      #- run: echo "PR title is '${{ github.event.pull_request.title}}'."
+
+      ##Writing messages to the log
+      - name: Write messages to the log
+        run: |
+            echo "This is a notice message." >> $GITHUB_STEP_SUMMARY
+            echo "##[warning]This is a warning message." >> $GITHUB_STEP_SUMMARY
+            echo "##[error]This is an error message." >> $GITHUB_STEP_SUMMARY
